@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT-Bootstrap
+ *  Copyright 2013 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,28 +15,32 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
+import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Size of {@link com.github.gwtbootstrap.client.ui.Icon}
- * @since 2.0.4.0
- * @author: Carlos A Becker
+ * Rotation for {@link Icon}
+ *
+ * @author Sven Jacobs
+ * @see Icon
+ * @see Icon#setRotate(IconRotate)
+ * @since 2.3.2.0
  */
-public enum IconSize implements Style {
+public enum IconRotate implements Style {
 
-    DEFAULT(""), LARGE("large"), TWO_TIMES("2x"), THREE_TIMES("3x"), FOUR_TIMES("4x"), FIVE_TIMES("5x");
+    NONE(""),
+    ROTATE_90("icon-rotate-90"),
+    ROTATE_180("icon-rotate-180"),
+    ROTATE_270("icon-rotate-270");
 
-    private String style;
+    private final String className;
 
-    private IconSize(String style) {
-        this.style = style;
+    private IconRotate(final String className) {
+        this.className = className;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String get() {
-        return style == null || style.isEmpty() ? "" : "icon-" + style;
+        return className;
     }
 }

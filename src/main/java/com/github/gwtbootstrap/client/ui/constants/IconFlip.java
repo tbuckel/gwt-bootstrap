@@ -13,24 +13,33 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.event;
+package com.github.gwtbootstrap.client.ui.constants;
 
-import com.google.gwt.event.shared.EventHandler;
+import com.github.gwtbootstrap.client.ui.Icon;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Handler interface for {@link ClosedEvent} events.
+ * Flip for {@link Icon}
  *
- * @author Dominik Mayer
- * @author Danilo Reinert
- *
- * @since 2.0.4.0
+ * @author Sven Jacobs
+ * @see Icon
+ * @see Icon#setFlip(IconFlip)
+ * @since 2.3.2.0
  */
-public interface ClosedHandler<T> extends EventHandler {
+public enum IconFlip implements Style {
 
-    /**
-     * Called when {@link ClosedEvent} is fired.
-     *
-     * @param event the {@link ClosedEvent} that was fired
-     */
-    void onClosed(ClosedEvent<T> event);
+    NONE(""),
+    HORIZONTAL("icon-flip-horizontal"),
+    VERTICAL("icon-flip-vertical");
+
+    private final String className;
+
+    private IconFlip(final String className) {
+        this.className = className;
+    }
+
+    @Override
+    public String get() {
+        return className;
+    }
 }
