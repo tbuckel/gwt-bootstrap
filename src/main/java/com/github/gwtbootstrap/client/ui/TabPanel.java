@@ -15,9 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.core.client.GWT;
@@ -31,6 +28,9 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //@formatter:off
 /**
@@ -389,7 +389,18 @@ public class TabPanel extends DivWidget {
             return tabs.remove(dropdownTab);
 
         } else if (w instanceof TabPane) {
-            return tabContent.remove(w);
+            TabPane tabPane = (TabPane) w;
+            TabLink tabLinkToRemove = null;
+            for (TabLink tabLink : tabLinkList) {
+                if (tabLink.getTabPane() == tabPane) {
+                    tabLinkToRemove = tabLink;
+                }
+            }
+            if (tabLinkToRemove != null) {
+                return remove(tabLinkToRemove);
+            } else {
+                return tabContent.remove(w);
+            }
         }
 
         return super.remove(w);

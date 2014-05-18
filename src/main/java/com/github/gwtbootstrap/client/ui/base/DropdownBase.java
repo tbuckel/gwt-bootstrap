@@ -166,6 +166,14 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
     }
 
     @Override
+    public void insert(Widget widget, int beforeIndex) {
+        menu.insert(widget, beforeIndex);
+        if (widget instanceof NavLink) {
+            ((NavLink) widget).addClickHandler(handler);
+        }
+    }
+
+    @Override
     public HandlerRegistration addChangeHandler(ChangeHandler handler) {
         return addDomHandler(handler, ChangeEvent.getType());
     }
