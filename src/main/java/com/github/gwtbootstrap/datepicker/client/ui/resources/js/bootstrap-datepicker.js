@@ -156,6 +156,13 @@
 			});
 		},
 
+		// START
+        remove: function() {
+            this.picker.remove();
+            delete this.element.data().datepicker;
+        },
+		// END
+
 		getDate: function() {
 			var d = this.getUTCDate();
 			return new Date(d.getTime() + (d.getTimezoneOffset()*60000))
